@@ -1,6 +1,6 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 
 export default function MobilePage() {
     return (
@@ -13,7 +13,7 @@ export default function MobilePage() {
                 <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
                 <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-                    <div className="max-w-xl">
+                    <div className="max-w-xl animate-fade-in-up">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wider mb-6">
                             <span className="size-1.5 rounded-full bg-green-600 animate-pulse"></span> Live Operational Sync
                         </div>
@@ -24,11 +24,11 @@ export default function MobilePage() {
                             Frontline documentation, guided compliance, and voice-first data capture — designed for the reality of care. Audit-Ready from day one.
                         </p>
                         <div className="flex gap-4">
-                            <button className="px-6 py-3 bg-mobile-navy-900 text-white font-bold rounded shadow-lg hover:bg-mobile-navy-800 transition-colors">Start Platform Demo</button>
-                            <button className="px-6 py-3 bg-white text-mobile-navy-900 font-bold rounded shadow border border-gray-200 hover:bg-gray-50 transition-colors">View Platform Tour</button>
+                            <Button>Start Platform Demo</Button>
+                            <Button variant="outline">View Platform Tour</Button>
                         </div>
                     </div>
-                    <div className="relative flex justify-center">
+                    <div className="relative flex justify-center animate-fade-in-up [animation-delay:200ms]">
                         {/* Phone Mockup */}
                         <div className="w-[300px] bg-mobile-navy-900 rounded-[3rem] p-4 shadow-2xl border-4 border-gray-800 relative z-10">
                             <div className="bg-white rounded-[2.2rem] overflow-hidden h-[600px] relative">

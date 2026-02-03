@@ -1,6 +1,6 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 
 export default function TrustPage() {
     return (
@@ -9,19 +9,21 @@ export default function TrustPage() {
 
             {/* Hero */}
             <section className="pt-32 pb-20 px-6 text-center max-w-5xl mx-auto">
-                <span className="inline-block py-1 px-3 rounded-full bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-wider mb-6 border border-green-100">
-                    Enterprise Grade Security
-                </span>
-                <h1 className="font-serif text-5xl md:text-7xl font-bold text-mobile-navy-900 mb-8 leading-tight">
-                    Trust is our <span className="relative z-10">infrastructure.<span className="absolute bottom-2 left-0 w-full h-3 bg-green-200/50 -z-10"></span></span>
-                </h1>
-                <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    We build deterministic compliance layers for regulated industries. Fully transparent, strictly governed, and wall-tested for the Australian Aged Care sector.
-                </p>
-                <div className="flex justify-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-400">
-                    <span className="flex items-center gap-1"><span className="material-symbols-outlined text-green-500 text-sm">check_circle</span> Not AI Generated</span>
-                    <span className="flex items-center gap-1"><span className="material-symbols-outlined text-green-500 text-sm">check_circle</span> ISO 27001 Compliant</span>
-                    <span className="flex items-center gap-1"><span className="material-symbols-outlined text-green-500 text-sm">check_circle</span> Australian Hosted</span>
+                <div className="animate-fade-in-up">
+                    <span className="inline-block py-1 px-3 rounded-full bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-wider mb-6 border border-green-100">
+                        Enterprise Grade Security
+                    </span>
+                    <h1 className="font-serif text-5xl md:text-7xl font-bold text-mobile-navy-900 mb-8 leading-tight">
+                        Trust is our <span className="relative z-10">infrastructure.<span className="absolute bottom-2 left-0 w-full h-3 bg-green-200/50 -z-10"></span></span>
+                    </h1>
+                    <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+                        We build deterministic compliance layers for regulated industries. Fully transparent, strictly governed, and wall-tested for the Australian Aged Care sector.
+                    </p>
+                    <div className="flex justify-center gap-6 text-xs font-bold uppercase tracking-wider text-slate-400">
+                        <span className="flex items-center gap-1"><span className="material-symbols-outlined text-green-500 text-sm">check_circle</span> Not AI Generated</span>
+                        <span className="flex items-center gap-1"><span className="material-symbols-outlined text-green-500 text-sm">check_circle</span> ISO 27001 Compliant</span>
+                        <span className="flex items-center gap-1"><span className="material-symbols-outlined text-green-500 text-sm">check_circle</span> Australian Hosted</span>
+                    </div>
                 </div>
             </section>
 

@@ -1,7 +1,6 @@
-
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 
 export default function Home() {
     return (
@@ -25,13 +24,8 @@ export default function Home() {
                             Transform voice-first data capture into audit-ready records. Elithia automates compliance for the new regulatory era.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <button className="px-8 py-4 rounded bg-mobile-navy-900 text-white font-bold shadow-xl hover:bg-mobile-navy-800 transition-all transform hover:-translate-y-0.5">
-                                Run Platform Demo
-                            </button>
-                            <button className="px-8 py-4 rounded bg-white text-mobile-navy-900 border border-gray-200 font-bold hover:border-mobile-navy-900 transition-colors flex items-center gap-2">
-                                <span className="material-symbols-outlined text-lg">play_circle</span>
-                                Watch Video
-                            </button>
+                            <Button>Run Platform Demo</Button>
+                            <Button variant="outline" icon="play_circle">Watch Video</Button>
                         </div>
                         <p className="mt-6 text-xs text-slate-400">
                             * Trusted by 70+ aged care providers across Australia.
@@ -237,7 +231,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-6">
-                        <div className="bg-mobile-navy-800 p-6 rounded-xl border border-white/5">
+                        <div className="bg-mobile-navy-800 p-6 rounded-xl border border-white/5 hover:-translate-y-1 transition-transform duration-300">
                             <div className="flex justify-between text-sm font-bold text-gray-300 mb-2">
                                 <span>Daily Documentation Time (mins/resident)</span>
                                 <span className="text-mobile-teal-400">Target &gt; 15 mins</span>
@@ -249,7 +243,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="bg-mobile-navy-800 p-6 rounded-xl border border-white/5">
+                        <div className="bg-mobile-navy-800 p-6 rounded-xl border border-white/5 hover:-translate-y-1 transition-transform duration-300">
                             <div className="flex justify-between text-sm font-bold text-gray-300 mb-2">
                                 <span>SIRS Reporting Delay (Incident to Report)</span>
                                 <span className="text-mobile-teal-400">Target: Immediate</span>
@@ -405,8 +399,8 @@ export default function Home() {
                         <h2 className="font-serif text-4xl md:text-6xl font-bold text-white mb-8">Ready to modernize your compliance?</h2>
                         <p className="text-gray-300 text-lg mb-10">Join the forward-thinking aged care providers using Elithia for better care and effortless compliance.</p>
                         <div className="flex justify-center gap-4">
-                            <button className="px-8 py-4 bg-white text-mobile-navy-900 font-bold rounded shadow-lg hover:bg-gray-100 transition-colors">Request a Demo</button>
-                            <button className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold rounded hover:bg-white/10 transition-colors">Calculate ROI</button>
+                            <Button className="bg-white text-mobile-navy-900 hover:bg-gray-100">Request a Demo</Button>
+                            <Button variant="outline" className="text-white border-white/20 hover:bg-white/10 hover:border-white">Calculate ROI</Button>
                         </div>
                     </div>
                 </div>

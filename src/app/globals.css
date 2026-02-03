@@ -17,6 +17,9 @@
   --color-surface-light: #FFFFFF;
   --color-surface-dark: #1E293B;
 
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+
   /* Compliance Page Specific Colors - Prefixed to allow mixing if needed, 
      though mostly re-mapping primary/accent for the page scope would be cleaner 
      if using CSS vars, but here we just add them to the palette */

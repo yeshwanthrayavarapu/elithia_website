@@ -1,6 +1,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Button from "@/components/Button";
 
 export default function CompliancePage() {
     return (
@@ -8,23 +9,18 @@ export default function CompliancePage() {
             <Navbar />
 
             {/* Hero */}
-            <section className="pt-40 pb-20 px-6 text-center max-w-5xl mx-auto">
-                <span className="inline-block py-1 px-3 rounded-full bg-green-50 text-green-700 text-[10px] font-bold uppercase tracking-wider mb-6">
-                    Now solving for 2025 Reporting
-                </span>
-                <h1 className="font-serif text-5xl md:text-7xl font-bold text-mobile-navy-900 mb-8 leading-tight">
-                    The Intelligence Layer for <br /> <span className="text-mobile-teal-600 underline decoration-4 decoration-mobile-teal-200/50 underline-offset-8">Regulated Care</span>
-                </h1>
-                <p className="text-lg text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Elithia transforms voice data into compliant documentation. We automate the critical path from bedside care to mandatory reporting with deterministic precision.
-                </p>
-                <div className="flex justify-center gap-4">
-                    <button className="px-8 py-4 rounded bg-mobile-teal-700 text-white font-bold shadow-xl hover:bg-mobile-teal-800 transition-all">
-                        See Platform
-                    </button>
-                    <button className="px-8 py-4 rounded bg-white text-mobile-navy-900 border border-gray-200 font-bold hover:border-mobile-navy-900 transition-colors">
-                        Read the Whitepaper
-                    </button>
+            <section className="pt-32 pb-20 px-6 max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="animate-fade-in-up">
+                    <h1 className="font-serif text-5xl md:text-7xl font-bold text-mobile-navy-900 mb-6 leading-tight">
+                        Compliance that <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-mobile-teal-600 to-green-500">listens.</span>
+                    </h1>
+                    <p className="text-lg text-slate-500 mb-8 leading-relaxed max-w-lg">
+                        Turn voice, clinical notes, and handover logs into structured, audit-ready data instantly. Our engine maps every interaction to the Aged Care Quality Standards in real-time.
+                    </p>
+                    <div className="flex gap-4">
+                        <Button>Start Compliance Audit</Button>
+                        <Button variant="outline" icon="play_circle">See it in Action</Button>
+                    </div>
                 </div>
             </section>
 
