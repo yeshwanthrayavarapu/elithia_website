@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Button from './Button';
+import Logo from '@/components/ui/logo';
 
 export default function Navbar() {
     const pathname = usePathname();
@@ -14,12 +15,9 @@ export default function Navbar() {
 
     return (
         <nav className="fixed w-full z-50 top-0 left-0 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
-            <div className="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2 group">
-                    <div className="size-6 bg-mobile-teal-500 rounded-lg group-hover:scale-110 transition-transform duration-300"></div>
-                    <span className="font-serif font-bold text-2xl tracking-tight text-mobile-navy-900 group-hover:text-mobile-teal-700 transition-colors">
-                        Elithia
-                    </span>
+            <div className="max-w-[1400px] mx-auto px-6 h-24 flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-2 group py-2">
+                    <Logo className="h-12 w-auto group-hover:scale-105 transition-transform duration-300" />
                 </Link>
                 <div className="hidden lg:flex items-center gap-4 text-sm font-medium">
                     <Link href="/" className={isActive('/')}>Platform</Link>

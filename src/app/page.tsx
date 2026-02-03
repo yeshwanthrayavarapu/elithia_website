@@ -1,6 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
+import LogoMarquee from "@/components/LogoMarquee";
+import StickyScroll from "@/components/StickyScroll";
+import PlatformDiagram from "@/components/PlatformDiagram";
 
 export default function Home() {
     return (
@@ -9,6 +12,11 @@ export default function Home() {
 
             {/* Hero Section */}
             <section className="pt-32 pb-20 px-6 relative overflow-hidden bg-gradient-to-b from-mobile-teal-50/50 to-white">
+                {/* Aurora Blobs */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-mobile-teal-200/40 rounded-full blur-[100px] -z-10 animate-blob mix-blend-multiply"></div>
+                <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-purple-200/40 rounded-full blur-[100px] -z-10 animate-blob animation-delay-2000 mix-blend-multiply"></div>
+                <div className="absolute -bottom-32 left-20 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[100px] -z-10 animate-blob animation-delay-4000 mix-blend-multiply"></div>
+
                 <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="max-w-2xl">
                         <div className="flex gap-2 mb-6">
@@ -94,128 +102,60 @@ export default function Home() {
             </section>
 
             {/* Trusted By */}
-            <section className="py-12 border-y border-gray-50 bg-white">
-                <div className="max-w-[1400px] mx-auto px-6">
-                    <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-8">Trusted by industry leaders</p>
-                    <div className="flex flex-wrap justify-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-                        {['Opal Health', 'Regis Aged Care', 'Estia Health', 'Bolton Clarke', 'Japara'].map((brand, i) => (
-                            <span key={i} className="text-xl font-serif font-bold text-mobile-navy-900">{brand}</span>
-                        ))}
-                    </div>
+            <section className="py-12 border-y border-gray-50 bg-white overflow-hidden">
+                <div className="max-w-[1400px] mx-auto px-6 mb-8">
+                    <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Trusted by industry leaders</p>
                 </div>
+                <LogoMarquee />
             </section>
 
-            {/* Operational Intelligence */}
-            <section className="py-24 bg-white">
-                <div className="max-w-[1400px] mx-auto px-6 mb-16 text-center">
-                    <span className="text-mobile-teal-600 font-bold text-xs uppercase tracking-widest mb-3 block">Industry Specific Solutions</span>
-                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-mobile-navy-900">Operational Intelligence for <span className="italic">Every Care Setting</span></h2>
-                </div>
+            {/* Operational Intelligence (Sticky Scroll) */}
+            <StickyScroll />
 
-                <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
-                        { title: "Residential Aged Care", icon: "apartment", color: "bg-green-50 text-green-600" },
-                        { title: "Home Care", icon: "home_health", color: "bg-blue-50 text-blue-600" },
-                        { title: "Disability Support", icon: "accessible", color: "bg-purple-50 text-purple-600" },
-                        { title: "NDIS Care", icon: "volunteer_activism", color: "bg-orange-50 text-orange-600" },
-                    ].map((item, i) => (
-                        <div key={i} className="p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-mobile-teal-100 transition-all group bg-white">
-                            <div className={`size-12 rounded-xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                <span className="material-symbols-outlined text-2xl">{item.icon}</span>
-                            </div>
-                            <h3 className="font-serif font-bold text-xl text-mobile-navy-900 mb-3">{item.title}</h3>
-                            <p className="text-sm text-slate-500 leading-relaxed">
-                                Automated SIRS reporting and critical funding evidence collection. Turn static policies into active flows.
-                            </p>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Scale Care Stats */}
+            {/* Scale Care Stats - Bento Grid */}
             <section className="py-24 bg-mobile-gray-50/50">
                 <div className="max-w-[1400px] mx-auto px-6 text-center mb-16">
                     <h2 className="font-serif text-4xl md:text-5xl font-bold text-mobile-navy-900 mb-6">Scale care without scaling risk.</h2>
                     <p className="text-slate-600 max-w-2xl mx-auto text-lg">Traditional documentation slows you down. Elithia moves at the speed of care.</p>
                 </div>
-                <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden group">
+                <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-6 h-auto">
+                    {/* Large Bento Box */}
+                    <div className="md:col-span-2 md:row-span-2 bg-white p-10 rounded-3xl border border-gray-100 shadow-sm relative overflow-hidden group flex flex-col justify-center items-start hover:shadow-xl transition-shadow duration-300 min-h-[400px]">
                         <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-                            <span className="material-symbols-outlined text-8xl text-mobile-teal-600">verified</span>
+                            <span className="material-symbols-outlined text-9xl text-mobile-teal-600">verified</span>
                         </div>
-                        <div className="size-10 rounded-full bg-green-50 flex items-center justify-center text-green-600 mb-6">
-                            <span className="material-symbols-outlined">check_circle</span>
+                        <div className="size-16 rounded-2xl bg-green-50 flex items-center justify-center text-green-600 mb-8">
+                            <span className="material-symbols-outlined text-4xl">check_circle</span>
                         </div>
-                        <h3 className="text-5xl font-bold text-mobile-navy-900 mb-2">100%</h3>
-                        <p className="font-bold text-xs uppercase tracking-wider text-slate-400 mb-4">Audit Trail</p>
-                        <p className="text-sm text-slate-500">Every interaction is cryptographically hashed, timestamped, and mapped to the relevant Aged Care Quality Standards.</p>
+                        <div>
+                            <h3 className="text-7xl font-bold text-mobile-navy-900 mb-4 tracking-tight">100%</h3>
+                            <p className="font-bold text-sm uppercase tracking-wider text-slate-400 mb-6">Audit Compliant</p>
+                            <p className="text-xl text-slate-500 max-w-lg leading-relaxed">Every single interaction is cryptographically hashed, timestamped, and mapped to the relevant Aged Care Quality Standards automatically.</p>
+                        </div>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden group">
-                        <div className="size-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mb-6">
-                            <span className="material-symbols-outlined">schedule</span>
+                    {/* Top Right Bento Box */}
+                    <div className="bg-mobile-navy-900 p-8 rounded-3xl border border-mobile-navy-800 shadow-sm relative overflow-hidden group text-white hover:bg-mobile-navy-800 transition-colors flex flex-col justify-center min-h-[240px]">
+                        <div className="size-12 rounded-full bg-white/10 flex items-center justify-center text-white mb-6">
+                            <span className="material-symbols-outlined text-2xl">schedule</span>
                         </div>
-                        <h3 className="text-5xl font-bold text-mobile-navy-900 mb-2">2hr/day</h3>
-                        <p className="font-bold text-xs uppercase tracking-wider text-slate-400 mb-4">Saved per Clinician</p>
-                        <p className="text-sm text-slate-500">Eliminate after-hours charting. Voice-to-text captures notes during care, and AI structures the data effortlessly.</p>
+                        <h3 className="text-5xl font-bold mb-2">2hr<span className="text-3xl text-mobile-teal-400">/day</span></h3>
+                        <p className="text-sm font-bold uppercase tracking-wider text-gray-400">Saved per Clinician</p>
                     </div>
 
-                    <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm relative overflow-hidden group">
-                        <div className="size-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 mb-6">
-                            <span className="material-symbols-outlined">bolt</span>
+                    {/* Bottom Right Bento Box */}
+                    <div className="bg-mobile-teal-500 p-8 rounded-3xl border border-mobile-teal-400 shadow-sm relative overflow-hidden group text-white flex flex-col justify-center min-h-[240px]">
+                        <div className="size-12 rounded-full bg-white/20 flex items-center justify-center text-white mb-6">
+                            <span className="material-symbols-outlined text-2xl">bolt</span>
                         </div>
-                        <h3 className="text-5xl font-bold text-mobile-navy-900 mb-2">Real-time</h3>
-                        <p className="font-bold text-xs uppercase tracking-wider text-slate-400 mb-4">SIRS Readiness</p>
-                        <p className="text-sm text-slate-500">Detect potential Serious Incident Response Scheme (SIRS) events immediately. Not weeks later via audit.</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* Infrastructure Flow */}
-            <section className="py-24 bg-white overflow-hidden">
-                <div className="max-w-[1400px] mx-auto px-6 text-center mb-16">
-                    <span className="text-slate-400 font-bold text-xs uppercase tracking-widest mb-3 block">Unified Platform</span>
-                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-mobile-navy-900">The Infrastructure for <span className="italic">Real-Time Governance</span></h2>
-                </div>
-
-                <div className="max-w-4xl mx-auto px-6 relative">
-                    {/* Connecting Line */}
-                    <div className="absolute left-[50%] top-0 bottom-0 w-px bg-gray-200 -z-10 hidden md:block"></div>
-
-                    <div className="flex flex-col gap-8 md:gap-12 items-center">
-                        {/* Level 1 */}
-                        <div className="bg-white border border-gray-200 rounded-full px-8 py-4 shadow-lg text-center relative z-10 w-full md:w-auto hover:border-mobile-navy-900 transition-colors">
-                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-mobile-navy-900 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tier 1</div>
-                            <h3 className="font-bold text-mobile-navy-900 text-lg">Board & Executive Leadership</h3>
-                            <p className="text-xs text-slate-500 mt-1">Real-time Quality Indicator Monitoring • Approved Risk Appetite</p>
-                        </div>
-
-                        <span className="material-symbols-outlined text-gray-300">arrow_downward</span>
-
-                        {/* Level 2 */}
-                        <div className="bg-mobile-teal-50 border border-mobile-teal-200 rounded-full px-8 py-4 shadow-lg text-center relative z-10 w-full md:w-auto hover:border-mobile-teal-500 transition-colors">
-                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-mobile-teal-600 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Tier 2</div>
-                            <h3 className="font-bold text-mobile-teal-800 text-lg">Clinical Governance & Management</h3>
-                            <p className="text-xs text-mobile-teal-600 mt-1">Rapid Root Cause Analysis • Staff Performance Monitoring • Audit Readiness</p>
-                        </div>
-
-                        <span className="material-symbols-outlined text-gray-300">arrow_downward</span>
-
-                        {/* Level 3 */}
-                        <div className="bg-white border border-gray-200 rounded-full px-8 py-4 shadow-lg text-center relative z-10 w-full md:w-auto hover:border-mobile-navy-900 transition-colors flex items-center gap-4 justify-between">
-                            <div className="text-left">
-                                <div className="bg-slate-100 text-slate-500 text-[10px] font-bold px-2 py-0.5 rounded uppercase inline-block mb-1">Tier 3</div>
-                                <h3 className="font-bold text-mobile-navy-900 text-lg">Frontline Care Staff (RNs, PCAs)</h3>
-                                <p className="text-xs text-slate-500">Voice-First Documentation • Workflows • Bedside Assessments</p>
-                            </div>
-                            <div className="bg-green-50 border border-green-100 p-2 rounded text-left hidden sm:block">
-                                <div className="text-[10px] font-bold text-green-700 flex items-center gap-1"><span className="material-symbols-outlined text-[10px]">check_circle</span> Outcomes</div>
-                                <div className="text-[10px] text-green-600">Standard 3.2 Met</div>
-                            </div>
-                        </div>
+                        <h3 className="text-5xl font-bold mb-2">Real-time</h3>
+                        <p className="text-sm font-bold uppercase tracking-wider text-mobile-teal-100">SIRS Detection</p>
                     </div>
                 </div>
             </section>
+
+            {/* Infrastructure Flow - Replaced with Platform Diagram */}
+            <PlatformDiagram />
 
             {/* Proven Outcomes - Dark Section */}
             <section className="py-24 bg-mobile-navy-900 text-white relative overflow-hidden">
