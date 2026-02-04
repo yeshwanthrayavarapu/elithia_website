@@ -1,112 +1,144 @@
+/**
+ * Platform Diagram - Redesigned
+ * More compact, modern visualization of data orchestration
+ */
 
 "use client";
 import React from 'react';
+import { cn } from '@/lib/design-system-utils';
 
 export default function PlatformDiagram() {
+    const dataNodes = [
+        {
+            icon: "mic",
+            title: "Voice Data",
+            description: "Unstructured audio from bedside",
+            color: "purple",
+            delay: "0ms"
+        },
+        {
+            icon: "dns",
+            title: "EHR Systems",
+            description: "Clinical history & care plans",
+            color: "blue",
+            delay: "150ms"
+        },
+        {
+            icon: "gavel",
+            title: "Regulation",
+            description: "Aged Care Quality Standards",
+            color: "green",
+            delay: "300ms"
+        }
+    ];
+
+    const colorClasses = {
+        purple: "bg-purple-50 text-purple-600 border-purple-200",
+        blue: "bg-blue-50 text-blue-600 border-blue-200",
+        green: "bg-green-50 text-green-600 border-green-200",
+    };
+
     return (
-        <section className="py-32 bg-slate-900 overflow-hidden relative">
-            {/* Background Grid */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+        <section className="py-20 md:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 overflow-hidden relative">
+            {/* Subtle Background Pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(20,184,166,0.05)_0%,transparent_50%)]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(59,130,246,0.05)_0%,transparent_50%)]"></div>
 
-            {/* Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-mobile-teal-500/10 rounded-full blur-[120px]"></div>
-
-            <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-                <div className="text-center mb-20">
-                    <span className="text-mobile-teal-400 font-bold text-xs uppercase tracking-widest mb-3 block">The Intelligence Layer</span>
-                    <h2 className="font-serif text-4xl md:text-5xl font-bold text-white">Orchestrating <span className="text-transparent bg-clip-text bg-gradient-to-r from-mobile-teal-400 to-green-400">Care Data</span></h2>
+            <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+                {/* Header */}
+                <div className="text-center mb-12">
+                    <span className="text-mobile-teal-600 font-bold text-xs uppercase tracking-widest block mb-2">
+                        The Intelligence Layer
+                    </span>
+                    <h2 className="font-serif text-3xl md:text-4xl font-bold text-slate-900">
+                        Orchestrating <span className="text-transparent bg-clip-text bg-gradient-to-r from-mobile-teal-600 to-green-600">Care Data</span>
+                    </h2>
                 </div>
 
-                <div className="relative h-[600px] flex items-center justify-center">
+                {/* Diagram */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                    {/* Data Source Cards */}
+                    {dataNodes.map((node, index) => (
+                        <div
+                            key={node.title}
+                            className={cn(
+                                "p-6 rounded-2xl bg-white border-2 shadow-sm",
+                                "hover:shadow-lg hover:border-mobile-teal-300",
+                                "transition-all duration-300 animate-fade-in-up relative group",
+                                colorClasses[node.color as keyof typeof colorClasses]
+                            )}
+                            style={{ animationDelay: node.delay }}
+                        >
+                            {/* Icon */}
+                            <div className={cn(
+                                "size-12 rounded-xl flex items-center justify-center mb-4",
+                                "group-hover:scale-110 transition-transform duration-200",
+                                colorClasses[node.color as keyof typeof colorClasses]
+                            )}>
+                                <span className="material-symbols-outlined text-2xl">{node.icon}</span>
+                            </div>
 
-                    {/* Central Core */}
-                    <div className="relative z-20 flex flex-col items-center justify-center size-48 rounded-full bg-slate-900 border-2 border-mobile-teal-500/50 shadow-[0_0_60px_rgba(20,184,166,0.3)] backdrop-blur-md">
-                        <div className="absolute inset-0 rounded-full border border-mobile-teal-500/20 animate-[ping_3s_ease-out_infinite]"></div>
-                        <div className="size-16 rounded-xl bg-gradient-to-br from-mobile-teal-500 to-slate-800 flex items-center justify-center mb-2 shadow-lg">
-                            <span className="font-serif font-bold text-3xl text-white">E</span>
+                            {/* Content */}
+                            <h3 className="font-bold text-slate-900 text-lg mb-2">{node.title}</h3>
+                            <p className="text-sm text-slate-600 leading-relaxed">{node.description}</p>
+
+                            {/* Connection Indicator */}
+                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
+                                <div className="size-2 rounded-full bg-mobile-teal-500 animate-pulse"></div>
+                                <div className="w-0.5 h-6 bg-gradient-to-b from-mobile-teal-500/50 to-transparent mx-auto"></div>
+                            </div>
                         </div>
-                        <div className="text-white font-bold tracking-widest uppercase text-xs">Elithia Core</div>
+                    ))}
+
+                    {/* Center Core (below cards on mobile, visually connected on desktop) */}
+                    <div className="md:col-span-3 flex justify-center mt-12 md:mt-8">
+                        <div className="relative group">
+                            {/* Pulsing Ring */}
+                            <div className="absolute inset-0 rounded-2xl border-2 border-mobile-teal-400/40 animate-[ping_3s_ease-out_infinite]"></div>
+
+                            {/* Core Card */}
+                            <div className="relative px-8 py-6 rounded-2xl bg-gradient-to-br from-mobile-teal-500 to-mobile-teal-600 border-2 border-mobile-teal-400 shadow-xl">
+                                <div className="flex items-center gap-4">
+                                    {/* Logo */}
+                                    <div className="size-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+                                        <span className="font-serif font-bold text-2xl text-white">E</span>
+                                    </div>
+
+                                    {/* Text */}
+                                    <div>
+                                        <div className="font-bold text-white text-lg uppercase tracking-wider drop-shadow-sm">Elithia Core</div>
+                                        <div className="text-xs text-white/90 font-medium">AI Compliance Engine</div>
+                                    </div>
+
+                                    {/* Arrow indicator */}
+                                    <div className="ml-4 hidden lg:flex items-center gap-2 text-white/70">
+                                        <span className="text-xs uppercase tracking-wider font-bold">Output</span>
+                                        <span className="material-symbols-outlined text-white">arrow_forward</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Orbiting Satellites - Using absolute positioning for 'orbit' effect conceptually, but here creating a static robust layout with moving 'data' for reliability across screens */}
-
-                    {/* Top Left: Voice */}
-                    <div className="absolute top-[10%] left-[10%] md:left-[20%] p-6 rounded-2xl bg-slate-800/80 border border-slate-700 backdrop-blur-md hover:border-mobile-teal-500 transition-colors w-64 animate-fade-in-up">
-                        <div className="flex items-center gap-4 mb-3">
-                            <div className="size-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center"><span className="material-symbols-outlined">mic</span></div>
-                            <h3 className="font-bold text-white">Voice Data</h3>
-                        </div>
-                        <p className="text-xs text-slate-400">Unstructured audio from bedside interactions.</p>
-                        {/* Connection Line */}
-                        <svg className="absolute -bottom-20 -right-20 w-40 h-40 pointer-events-none text-slate-800 hidden md:block" style={{ transform: 'rotate(45deg)' }}>
-                            <path d="M0,20 Q40,20 40,60" fill="none" stroke="currentColor" strokeWidth="2" />
-                            <circle r="3" fill="#2dd4bf">
-                                <animateMotion dur="3s" repeatCount="indefinite" path="M0,20 Q40,20 40,60" />
-                            </circle>
-                        </svg>
+                    {/* Output Features */}
+                    <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                        {[
+                            { icon: "check_circle", label: "100% Compliant Records" },
+                            { icon: "insights", label: "Real-time Risk Detection" },
+                            { icon: "shield", label: "Audit-Ready Reports" }
+                        ].map((feature, i) => (
+                            <div
+                                key={feature.label}
+                                className="flex items-center gap-3 p-4 rounded-xl bg-white border-2 border-slate-200 hover:border-mobile-teal-300 hover:shadow-md transition-all"
+                                style={{ animationDelay: `${450 + i * 100}ms` }}
+                            >
+                                <div className="size-10 rounded-lg bg-mobile-teal-50 text-mobile-teal-600 flex items-center justify-center flex-shrink-0">
+                                    <span className="material-symbols-outlined text-xl">{feature.icon}</span>
+                                </div>
+                                <span className="text-sm font-medium text-slate-900">{feature.label}</span>
+                            </div>
+                        ))}
                     </div>
-
-                    {/* Top Right: Systems */}
-                    <div className="absolute top-[10%] right-[10%] md:right-[20%] p-6 rounded-2xl bg-slate-800/80 border border-slate-700 backdrop-blur-md hover:border-mobile-teal-500 transition-colors w-64 animate-fade-in-up [animation-delay:200ms]">
-                        <div className="flex items-center gap-4 mb-3">
-                            <div className="size-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center"><span className="material-symbols-outlined">dns</span></div>
-                            <h3 className="font-bold text-white">EHR Systems</h3>
-                        </div>
-                        <p className="text-xs text-slate-400">Clinical history, medication, and care plans.</p>
-                        {/* Connection Line */}
-                        <svg className="absolute -bottom-20 -left-20 w-40 h-40 pointer-events-none text-slate-800 hidden md:block" style={{ transform: 'rotate(-45deg)' }}>
-                            <path d="M40,20 Q0,20 0,60" fill="none" stroke="currentColor" strokeWidth="2" />
-                            <circle r="3" fill="#2dd4bf">
-                                <animateMotion dur="3.5s" repeatCount="indefinite" path="M40,20 Q0,20 0,60" />
-                            </circle>
-                        </svg>
-                    </div>
-
-                    {/* Bottom Center: Regulatory */}
-                    <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 p-6 rounded-2xl bg-slate-800/80 border border-slate-700 backdrop-blur-md hover:border-mobile-teal-500 transition-colors w-64 animate-fade-in-up [animation-delay:600ms]">
-                        <div className="flex items-center gap-4 mb-3">
-                            <div className="size-10 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center"><span className="material-symbols-outlined">gavel</span></div>
-                            <h3 className="font-bold text-white">Regulation</h3>
-                        </div>
-                        <p className="text-xs text-slate-400">Real-time mapping to Aged Care Quality Standards.</p>
-                        {/* Connection Line */}
-                        <svg className="absolute -top-20 left-1/2 -translate-x-1/2 w-40 h-40 pointer-events-none text-slate-800 hidden md:block">
-                            <path d="M20,40 Q20,0 20,0" fill="none" stroke="currentColor" strokeWidth="2" />
-                            <circle r="3" fill="#2dd4bf">
-                                <animateMotion dur="4s" repeatCount="indefinite" path="M20,40 Q20,0 20,0" />
-                            </circle>
-                        </svg>
-                    </div>
-
-                    {/* Animated Connectors SVG Layer */}
-                    <svg className="absolute inset-0 w-full h-full pointer-events-none hidden md:block">
-                        <defs>
-                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="transparent" />
-                                <stop offset="50%" stopColor="#2dd4bf" />
-                                <stop offset="100%" stopColor="transparent" />
-                            </linearGradient>
-                        </defs>
-                        {/* Lines connecting corners to center */}
-                        {/* Top Left */}
-                        <path d="M300 150 L 650 300" stroke="url(#lineGradient)" strokeWidth="1" strokeOpacity="0.3" fill="none" />
-                        <circle r="3" fill="#2dd4bf">
-                            <animateMotion dur="2s" repeatCount="indefinite" path="M300 150 L 650 300" />
-                        </circle>
-
-                        {/* Top Right */}
-                        <path d="M1100 150 L 750 300" stroke="url(#lineGradient)" strokeWidth="1" strokeOpacity="0.3" fill="none" />
-                        <circle r="3" fill="#2dd4bf">
-                            <animateMotion dur="2.5s" repeatCount="indefinite" path="M1100 150 L 750 300" />
-                        </circle>
-
-                        {/* Bottom Center */}
-                        <path d="M700 500 L 700 380" stroke="url(#lineGradient)" strokeWidth="1" strokeOpacity="0.3" fill="none" />
-                        <circle r="3" fill="#2dd4bf">
-                            <animateMotion dur="2.2s" repeatCount="indefinite" path="M700 500 L 700 380" />
-                        </circle>
-                    </svg>
-
                 </div>
             </div>
         </section>

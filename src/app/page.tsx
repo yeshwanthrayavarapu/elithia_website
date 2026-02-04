@@ -4,6 +4,9 @@ import Button from "@/components/Button";
 import LogoMarquee from "@/components/LogoMarquee";
 import StickyScroll from "@/components/StickyScroll";
 import PlatformDiagram from "@/components/PlatformDiagram";
+import FeatureCard from "@/components/FeatureCard";
+import StatsDisplay from "@/components/StatsDisplay";
+import FlowConnector from "@/components/FlowConnector";
 
 export default function Home() {
     return (
@@ -32,7 +35,7 @@ export default function Home() {
                             Transform voice-first data capture into audit-ready records. Elithia automates compliance for the new regulatory era.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Button>Run Platform Demo</Button>
+                            <Button variant="vibrant">Run Platform Demo</Button>
                             <Button variant="outline" icon="play_circle">Watch Video</Button>
                         </div>
                         <p className="mt-6 text-xs text-slate-400">
@@ -107,6 +110,38 @@ export default function Home() {
                     <p className="text-center text-xs font-bold text-slate-400 uppercase tracking-widest">Trusted by industry leaders</p>
                 </div>
                 <LogoMarquee />
+            </section>
+
+            {/* Key Stats - Vibrant Display */}
+            <section className="py-20 bg-white">
+                <div className="max-w-[1400px] mx-auto px-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+                        <div className="text-center">
+                            <StatsDisplay
+                                value="90%"
+                                label="Automated Prior Auth"
+                                accent="magenta"
+                                size="lg"
+                            />
+                        </div>
+                        <div className="text-center">
+                            <StatsDisplay
+                                value="2hr/day"
+                                label="Saved per Clinician"
+                                accent="magenta"
+                                size="lg"
+                            />
+                        </div>
+                        <div className="text-center">
+                            <StatsDisplay
+                                value="100%"
+                                label="Audit Compliant"
+                                accent="magenta"
+                                size="lg"
+                            />
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* Operational Intelligence (Sticky Scroll) */}
@@ -215,16 +250,21 @@ export default function Home() {
                                 <p className="text-sm text-slate-500">Wait for Audit failure, retrospective entry, disconnected from actual care delivery.</p>
                             </div>
                         </div>
-                        <div className="flex gap-4 p-6 rounded-xl bg-white border border-mobile-teal-100 shadow-xl relative z-10 transform translate-x-4">
-                            <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-mobile-teal-500 text-white p-1 rounded-full shadow-lg z-20">
-                                <span className="material-symbols-outlined text-sm">arrow_downward</span>
-                            </div>
-                            <div className="size-8 rounded-full bg-mobile-teal-100 text-mobile-teal-700 flex items-center justify-center font-bold text-sm">2</div>
+
+                        {/* Flow Connector */}
+                        <FlowConnector direction="down" color="magenta" animated className="my-4" />
+
+                        <div className="flex gap-4 p-6 rounded-xl bg-[#FFF1F5] border border-[#E5205E]/20 shadow-lg">
+                            <div className="size-8 rounded-full bg-[#E5205E]/10 text-[#E5205E] flex items-center justify-center font-bold text-sm">2</div>
                             <div>
                                 <h3 className="font-bold text-mobile-navy-900 mb-1">The Elithia Bridge</h3>
                                 <p className="text-sm text-slate-500">AI captures, standardizes and verifies clinical data into structured regulatory fields.</p>
                             </div>
                         </div>
+
+                        {/* Flow Connector */}
+                        <FlowConnector direction="down" color="teal" animated className="my-4" />
+
                         <div className="flex gap-4 p-6 rounded-xl bg-green-50 border border-green-100">
                             <div className="size-8 rounded-full bg-green-200 text-green-700 flex items-center justify-center font-bold text-sm">3</div>
                             <div>
@@ -236,19 +276,21 @@ export default function Home() {
 
                     <div className="grid grid-cols-1 gap-8">
                         {[
-                            { title: "Ambient Capture", desc: "No special devices. AI runs in the background on mobile or tablets, capturing conversations and care interactions instantly without manual notes.", icon: "graphic_eq" },
-                            { title: "Automated Coding", desc: "Clinical notes automatically coded to SNOMED-CT and mapped to NDIS/Aged Care Pricing (AN-ACC) to ensure maximum rightful reimbursement.", icon: "account_tree" },
-                            { title: "Risk Prevention", desc: "Per-patient logic monitors vitals, moods, and incidents against historical data to flag declines BEFORE they hit the ED.", icon: "shield" }
+                            { title: "Ambient Capture", desc: "No special devices. AI runs in the background on mobile or tablets, capturing conversations and care interactions instantly without manual notes.", icon: "graphic_eq", color: "blue" as const },
+                            { title: "Automated Coding", desc: "Clinical notes automatically coded to SNOMED-CT and mapped to NDIS/Aged Care Pricing (AN-ACC) to ensure maximum rightful reimbursement.", icon: "account_tree", color: "purple" as const },
+                            { title: "Risk Prevention", desc: "Per-patient logic monitors vitals, moods, and incidents against historical data to flag declines BEFORE they hit the ED.", icon: "shield", color: "green" as const }
                         ].map((feat, i) => (
-                            <div key={i} className="flex gap-4">
-                                <div className="mt-1">
-                                    <span className="material-symbols-outlined text-mobile-teal-600">{feat.icon}</span>
+                            <FeatureCard key={i} background={feat.color} padding="md">
+                                <div className="flex gap-4">
+                                    <div className="mt-1">
+                                        <span className="material-symbols-outlined text-mobile-teal-600 text-3xl">{feat.icon}</span>
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-mobile-navy-900 text-lg mb-2">{feat.title}</h3>
+                                        <p className="text-slate-500 text-sm leading-relaxed">{feat.desc}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h3 className="font-bold text-mobile-navy-900 text-lg mb-2">{feat.title}</h3>
-                                    <p className="text-slate-500 text-sm leading-relaxed">{feat.desc}</p>
-                                </div>
-                            </div>
+                            </FeatureCard>
                         ))}
 
                         <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
@@ -339,7 +381,7 @@ export default function Home() {
                         <h2 className="font-serif text-4xl md:text-6xl font-bold text-white mb-8">Ready to modernize your compliance?</h2>
                         <p className="text-gray-300 text-lg mb-10">Join the forward-thinking aged care providers using Elithia for better care and effortless compliance.</p>
                         <div className="flex justify-center gap-4">
-                            <Button className="bg-white text-mobile-navy-900 hover:bg-gray-100">Request a Demo</Button>
+                            <Button variant="vibrant" className="bg-white text-mobile-navy-900 hover:bg-gray-100">Request a Demo</Button>
                             <Button variant="outline" className="text-white border-white/20 hover:bg-white/10 hover:border-white">Calculate ROI</Button>
                         </div>
                     </div>

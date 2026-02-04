@@ -2,6 +2,8 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
+import FeatureCard from "@/components/FeatureCard";
+import StatsDisplay from "@/components/StatsDisplay";
 
 export default function CompliancePage() {
     return (
@@ -18,7 +20,7 @@ export default function CompliancePage() {
                         Turn voice, clinical notes, and handover logs into structured, audit-ready data instantly. Our engine maps every interaction to the Aged Care Quality Standards in real-time.
                     </p>
                     <div className="flex gap-4">
-                        <Button>Start Compliance Audit</Button>
+                        <Button variant="vibrant">Start Compliance Audit</Button>
                         <Button variant="outline" icon="play_circle">See it in Action</Button>
                     </div>
                 </div>
@@ -206,18 +208,9 @@ export default function CompliancePage() {
             {/* Stats */}
             <section className="py-20 border-b border-gray-100">
                 <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div>
-                        <div className="text-5xl font-bold text-mobile-navy-900 mb-2">40%</div>
-                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Reduction in Documentation Time</div>
-                    </div>
-                    <div>
-                        <div className="text-5xl font-bold text-mobile-navy-900 mb-2">100%</div>
-                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Incident Report Traceability</div>
-                    </div>
-                    <div>
-                        <div className="text-5xl font-bold text-mobile-navy-900 mb-2">24/7</div>
-                        <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">Compliance Monitoring</div>
-                    </div>
+                    <StatsDisplay value="40%" label="Reduction in Documentation Time" size="lg" />
+                    <StatsDisplay value="100%" label="Incident Report Traceability" size="lg" />
+                    <StatsDisplay value="24/7" label="Compliance Monitoring" size="lg" />
                 </div>
             </section>
 

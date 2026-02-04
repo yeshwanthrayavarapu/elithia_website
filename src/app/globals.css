@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./design-tokens.css";
 
 @theme {
   --font-sans: var(--font-sans);
@@ -6,67 +7,23 @@
   --font-display: var(--font-display);
   --font-mono: var(--font-mono);
 
-  --color-primary: #0f172a;
-  --color-secondary: #0d9488;
-  --color-navy-dark: #020617;
-  --color-navy-light: #1e293b;
-  --color-teal-light: #f0fdfa;
-  --color-teal-accent: #14b8a6;
-  --color-background-light: #F8FAFC;
-  --color-background-dark: #0F172A;
-  --color-surface-light: #FFFFFF;
-  --color-surface-dark: #1E293B;
+  /* Legacy color mappings for backward compatibility */
+  --color-primary: var(--color-navy-900);
+  --color-secondary: var(--color-teal-600);
+  --color-navy-dark: var(--color-navy-950);
+  --color-navy-light: var(--color-navy-700);
+  --color-teal-light: var(--color-teal-50);
+  --color-teal-accent: var(--color-teal-500);
+  --color-background-light: var(--color-bg-secondary);
+  --color-background-dark: var(--color-bg-dark);
+  --color-surface-light: var(--color-bg-primary);
+  --color-surface-dark: var(--color-bg-dark-secondary);
 
+  /* Animation keyframes */
   --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
   --animate-fade-in: fade-in 0.5s ease-out forwards;
-
-  /* Compliance Page Specific Colors - Prefixed to allow mixing if needed, 
-     though mostly re-mapping primary/accent for the page scope would be cleaner 
-     if using CSS vars, but here we just add them to the palette */
-  --color-compliance-primary: #0F766E;
-  --color-compliance-primary-dark: #115E59;
-  --color-compliance-primary-light: #2DD4BF;
-  --color-compliance-bg-light: #F8FAFC;
-  --color-compliance-bg-dark: #0B1120;
-  --color-compliance-surface-light: #FFFFFF;
-  --color-compliance-surface-dark: #1E293B;
-  --color-compliance-text-light: #334155;
-  --color-compliance-text-dark: #E2E8F0;
-  --color-compliance-subtle-light: #64748B;
-  --color-compliance-subtle-dark: #94A3B8;
-  --color-compliance-border-light: #E2E8F0;
-  --color-compliance-border-dark: #334155;
-
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
-  --radius-3xl: 2rem;
-
-  --image-hero-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(204, 251, 241, 0.2) 100%);
-  --image-dark-hero-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
-
-  --image-grid-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-  --image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-
-  /* Governance Page Specific Colors */
-  --color-gov-primary: #329990;
-  --color-gov-primary-dark: #267870;
-  --color-gov-secondary: #1B2A41;
-  --color-gov-secondary-dark: #131E2F;
-  --color-gov-accent-pink: #E94F64;
-  --color-gov-bg-light: #F3F7F9;
-  --color-gov-bg-dark: #0F172A;
-  --color-gov-surface-light: #FFFFFF;
-  --color-gov-surface-dark: #1E293B;
-  --color-gov-text-light: #1B2A41;
-  --color-gov-text-dark: #E2E8F0;
-  --color-gov-subtle-light: #475569;
-  --color-gov-subtle-dark: #94A3B8;
-  --color-gov-border-light: #E2E8F0;
-  --color-gov-border-dark: #334155;
-
-  --shadow-soft: 0 4px 20px -2px rgba(27, 42, 65, 0.05);
-  --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
-
+  --animate-scroll: scroll 40s linear infinite;
+  --animate-blob: blob 7s infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-glow: glow 3s ease-in-out infinite;
   --animate-flow: flow 2s linear infinite;
@@ -76,9 +33,19 @@
     0% {
       opacity: 0;
     }
-
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -86,7 +53,6 @@
     0% {
       transform: translateX(0);
     }
-
     100% {
       transform: translateX(-50%);
     }
@@ -96,30 +62,21 @@
     0% {
       transform: translate(0px, 0px) scale(1);
     }
-
     33% {
       transform: translate(30px, -50px) scale(1.1);
     }
-
     66% {
       transform: translate(-20px, 20px) scale(0.9);
     }
-
     100% {
       transform: translate(0px, 0px) scale(1);
     }
   }
 
-  --animate-scroll: scroll 40s linear infinite;
-  --animate-blob: blob 7s infinite;
-
   @keyframes glow {
-
-    0%,
-    100% {
+    0%, 100% {
       box-shadow: 0 0 20px -5px rgba(15, 118, 110, 0.4);
     }
-
     50% {
       box-shadow: 0 0 30px 0px rgba(15, 118, 110, 0.7);
     }
@@ -129,7 +86,6 @@
     0% {
       stroke-dashoffset: 24;
     }
-
     100% {
       stroke-dashoffset: 0;
     }
@@ -141,67 +97,100 @@
     }
   }
 
-  /* Trust & Safety Page Specific Colors */
-  --color-trust-primary: #0F766E;
-  --color-trust-secondary: #115E59;
-  --color-trust-bg-light: #F8FAFC;
-  --color-trust-bg-dark: #0F172A;
-  --color-trust-surface-light: #FFFFFF;
-  --color-trust-surface-dark: #1E293B;
-  --color-trust-text-light: #334155;
-  --color-trust-text-dark: #94A3B8;
-  --color-trust-heading-light: #0F172A;
-  --color-trust-heading-dark: #F1F5F9;
+  /* Page-specific color tokens (kept for now, will migrate to design tokens) */
+  --color-compliance-primary: var(--color-teal-700);
+  --color-compliance-primary-dark: var(--color-teal-800);
+  --color-compliance-primary-light: var(--color-teal-400);
+  --color-compliance-bg-light: var(--color-bg-secondary);
+  --color-compliance-bg-dark: var(--color-navy-900);
+  --color-compliance-surface-light: var(--color-bg-primary);
+  --color-compliance-surface-dark: var(--color-navy-700);
+  --color-compliance-text-light: var(--color-text-secondary);
+  --color-compliance-text-dark: var(--color-navy-200);
+  --color-compliance-subtle-light: var(--color-text-secondary);
+  --color-compliance-subtle-dark: var(--color-text-tertiary);
+  --color-compliance-border-light: var(--color-border-light);
+  --color-compliance-border-dark: var(--color-border-dark);
 
-  --image-grid-light: linear-gradient(to right, #e2e8f0 1px, transparent 1px),
-  linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
-  --image-grid-dark: linear-gradient(to right, #1e293b 1px, transparent 1px),
-  linear-gradient(to bottom, #1e293b 1px, transparent 1px);
-  /* Mobile Operations Page Specific Colors */
-  --color-mobile-navy-900: #0B1C24;
-  --color-mobile-navy-800: #112122;
-  --color-mobile-navy-700: #1A2F33;
-  --color-mobile-teal-50: #F0FDFA;
-  --color-mobile-teal-100: #CCFBF1;
-  --color-mobile-teal-500: #14B8A6;
-  --color-mobile-teal-600: #0D9488;
-  --color-mobile-teal-700: #0F766E;
-  --color-mobile-teal-900: #134E4A;
-  --color-mobile-gray-50: #F9FAFB;
-  --color-mobile-gray-100: #F3F4F6;
+  --color-gov-primary: #329990;
+  --color-gov-primary-dark: #267870;
+  --color-gov-secondary: var(--color-navy-700);
+  --color-gov-secondary-dark: var(--color-navy-800);
+  --color-gov-accent-pink: #E94F64;
+  --color-gov-bg-light: var(--color-bg-secondary);
+  --color-gov-bg-dark: var(--color-bg-dark);
+  --color-gov-surface-light: var(--color-bg-primary);
+  --color-gov-surface-dark: var(--color-bg-dark-secondary);
+  --color-gov-text-light: var(--color-text-primary);
+  --color-gov-text-dark: var(--color-text-inverse);
+  --color-gov-subtle-light: var(--color-text-secondary);
+  --color-gov-subtle-dark: var(--color-text-tertiary);
+  --color-gov-border-light: var(--color-border-light);
+  --color-gov-border-dark: var(--color-border-dark);
 
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
-  --shadow-soft-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
+  --color-trust-primary: var(--color-teal-700);
+  --color-trust-secondary: var(--color-teal-800);
+  --color-trust-bg-light: var(--color-bg-secondary);
+  --color-trust-bg-dark: var(--color-bg-dark);
+  --color-trust-surface-light: var(--color-bg-primary);
+  --color-trust-surface-dark: var(--color-bg-dark-secondary);
+  --color-trust-text-light: var(--color-text-secondary);
+  --color-trust-text-dark: var(--color-text-tertiary);
+  --color-trust-heading-light: var(--color-text-primary);
+  --color-trust-heading-dark: var(--color-navy-100);
+
+  --color-mobile-navy-900: var(--color-navy-900);
+  --color-mobile-navy-800: var(--color-navy-800);
+  --color-mobile-navy-700: var(--color-navy-700);
+  --color-mobile-teal-50: var(--color-teal-50);
+  --color-mobile-teal-100: var(--color-teal-100);
+  --color-mobile-teal-500: var(--color-teal-500);
+  --color-mobile-teal-600: var(--color-teal-600);
+  --color-mobile-teal-700: var(--color-teal-700);
+  --color-mobile-teal-900: var(--color-teal-900);
+  --color-mobile-gray-50: var(--color-gray-50);
+  --color-mobile-gray-100: var(--color-gray-100);
+
+  /* Background patterns */
+  --image-grid-pattern: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+  --image-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
-.glass-card-mobile {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-}
-
-.grid-pattern-mobile {
-  background-image: linear-gradient(rgba(17, 33, 34, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17, 33, 34, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-/* Custom variant for class-based dark mode if needed, though media is default. 
-   To support manual toggling in the future, we can add a custom variant, 
-   but for now we'll stick to standard behavior or just add the class support. */
+/* Custom variant for dark mode support */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Base styles */
 body {
   background-color: var(--color-background-light);
-  color: #1f2937;
-  /* gray-800 approximation */
+  color: var(--color-text-primary);
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @media (prefers-color-scheme: dark) {
   body {
     background-color: var(--color-background-dark);
-    color: #e5e7eb;
-    /* gray-200 approximation */
+    color: var(--color-text-inverse);
+  }
+}
+
+/* Animation delays for staggered effects */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Float animation for floating cards */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

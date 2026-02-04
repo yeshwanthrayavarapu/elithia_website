@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
+import FeatureCard from "@/components/FeatureCard";
 
 export default function MobilePage() {
     return (
@@ -24,7 +25,7 @@ export default function MobilePage() {
                             Frontline documentation, guided compliance, and voice-first data capture — designed for the reality of care. Audit-Ready from day one.
                         </p>
                         <div className="flex gap-4">
-                            <Button>Start Platform Demo</Button>
+                            <Button variant="vibrant">Start Platform Demo</Button>
                             <Button variant="outline">View Platform Tour</Button>
                         </div>
                     </div>
@@ -107,11 +108,11 @@ export default function MobilePage() {
 
                 <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {[
-                        { title: "Voice-to-Notes", icon: "graphic_eq", desc: "Speak naturally. Our engine parses voice commands into structured SOAP notes instantly, removing manual typing." },
-                        { title: "Time & Task Capture", icon: "timer", desc: "Integrated active timers track precise care delivery duration automatically, ensuring billing accuracy." },
-                        { title: "Evidence Capture", icon: "camera_alt", desc: "Securely document incidents with photos. Automatic location tagging and immutable timestamps prevent disputes." }
+                        { title: "Voice-to-Notes", icon: "graphic_eq", desc: "Speak naturally. Our engine parses voice commands into structured SOAP notes instantly, removing manual typing.", bg: "blue" },
+                        { title: "Time & Task Capture", icon: "timer", desc: "Integrated active timers track precise care delivery duration automatically, ensuring billing accuracy.", bg: "purple" },
+                        { title: "Evidence Capture", icon: "camera_alt", desc: "Securely document incidents with photos. Automatic location tagging and immutable timestamps prevent disputes.", bg: "green" }
                     ].map((item, i) => (
-                        <div key={i} className="p-8 border border-gray-100 rounded-2xl hover:shadow-xl transition-shadow bg-white group">
+                        <FeatureCard key={i} background={item.bg as any} padding="md">
                             <div className="bg-slate-50 h-48 rounded-xl mb-8 flex items-center justify-center relative overflow-hidden">
                                 {/* Abstract visual for each card */}
                                 {i === 0 && <span className="material-symbols-outlined text-6xl text-mobile-teal-300 animate-pulse">graphic_eq</span>}
@@ -123,7 +124,7 @@ export default function MobilePage() {
                                 <h3 className="font-bold text-xl text-mobile-navy-900">{item.title}</h3>
                             </div>
                             <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-                        </div>
+                        </FeatureCard>
                     ))}
                 </div>
 

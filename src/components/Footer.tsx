@@ -1,15 +1,15 @@
-
 import Link from 'next/link';
+import Logo from '@/components/ui/logo';
+import { cn } from '@/lib/design-system-utils';
 
 export default function Footer() {
     return (
         <footer className="bg-white border-t border-gray-100 pt-16 pb-8 text-sm text-slate-500">
             <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
                 <div className="col-span-2">
-                    <div className="flex items-center gap-2 mb-6">
-                        <div className="size-5 bg-mobile-navy-900 rounded"></div>
-                        <span className="font-serif font-bold text-xl text-mobile-navy-900">Elithia</span>
-                    </div>
+                    <Link href="/" className="inline-block mb-6 group">
+                        <Logo className="h-12 w-auto group-hover:scale-105 transition-transform duration-300" />
+                    </Link>
                     <p className="max-w-sm">The infrastructure for the future of new Australian Electronic Health records.</p>
                     <div className="flex gap-4 mt-6">
                         <span className="size-8 bg-gray-100 rounded flex items-center justify-center text-slate-400 cursor-pointer hover:bg-gray-200"><span className="material-symbols-outlined text-sm">link</span></span>
